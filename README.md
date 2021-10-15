@@ -137,7 +137,7 @@ int main() {
 	a=10;
 	b=4;
 	c= a/b;
-   		printf("%d/%d=%d",a,b,c);
+   	printf("%d/%d=%d",a,b,c);
 	return 0;
 }
 ```
