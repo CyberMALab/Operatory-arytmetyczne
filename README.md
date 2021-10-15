@@ -2,7 +2,7 @@
 
 ## Operator przypisania
 
-Operatory arytmetyczne służą do wykonywania operacji matematycznych na zmiennych. Pierwszym z nich jest użyty już w poprzednim rozdziale operator przypisania. Jego symbolem jest znak ‘=’ . Zapisuje on wyrażenie podane po prawej stronie (P-wyrażenie), do wyrażenia po lewej stronie (L-wyrażenie). L-wyrażenie jest musi spełniać pewne kryteria. My przyjmiemy, że L-wyrażeniem musi być zmienna. P-wyrażeniem jest każde L-wyrażenie oraz inne wyrażenia dające wynik możliwy do zapisu, czyli wszelkiego rodzaju działania matematyczne czy funkcje zwracające wartość (albo kombinacja tych dwóch). W ANSI C istnieje więcej operatorów przypisania, które przypisują od razu wynik działania arytmetycznego wywołanego na przypisywanej zmiennej. Ich opis znajduje się w tabeli w dalszej części tego rozdziału.
+Operatory arytmetyczne służą do wykonywania operacji matematycznych na zmiennych. Pierwszym z nich jest użyty już w poprzednim rozdziale operator przypisania. Jego symbolem jest znak ‘=’ . Zapisuje on wyrażenie podane po prawej stronie (P-wyrażenie), do wyrażenia po lewej stronie (L-wyrażenie). L-wyrażenie jest musi spełniać pewne kryteria. My przyjmiemy, że L-wyrażeniem musi być zmienna. P-wyrażeniem jest każde L-wyrażenie oraz inne wyrażenia dające wynik możliwy do zapisu, czyli wszelkiego rodzaju działania matematyczne czy funkcje zwracające wartość (albo kombinacja tych dwóch). W ANSI C istnieje więcej operatorów przypisania, które przypisują od razu wynik działania arytmetycznego wywołanego na przypisywanej zmiennej. Ich opis znajduje się w tabeli w dalszej części tego rozdziału. Operator przypisania posiada wiązanie prawostronne, czyli wyrażenie po prawej stronie zostaje wykonane przed dokonaniem operacji przypisania.
 
 *Przykład (2.0)* *Wykonanie przypisania*
 
@@ -35,7 +35,7 @@ int main() {
 
 ## Operatory arytmetyczne
 
-Kolejnymi instrukcjami są operatory dodawania, odejmowania, mnożenia i dzielenia. Ich użycie jest bardzo intuicyjne więc, ich użycie najlepiej pokazać na przykładzie.
+Operatory arytmetyczne odpowiadają za działania dodawania, odejmowania, mnożenia i dzielenia. Ich użycie jest bardzo intuicyjne więc, ich użycie najlepiej pokazać na przykładzie.
 
 *Przykład (2.1) Operacje arytmetyczne*
 
@@ -79,7 +79,7 @@ int main() {
 >
 > a%b=0
 
-Jak widać, aby dokonać operacji arytmetycznych w języku C, wystarczy stworzyć działanie matematyczne po prawej stronie operatora przypisania (=) używając zmiennych lub wartości. Tworząc takie działanie można użyć więcej niż jednego operatora arytmetycznego, a komputer obliczy wartość zgodnie z kolejnością wykonywania działań. Wewnątrz działań matematycznych w programowaniu można używać również nawiasów.
+Jak widać, aby dokonać operacji arytmetycznych w języku C, wystarczy stworzyć działanie matematyczne po prawej stronie operatora przypisania (=) używając zmiennych lub wartości. Tworząc takie działanie można użyć więcej niż jednego operatora arytmetycznego, a komputer obliczy wartość zgodnie z kolejnością wykonywania działań. Wewnątrz działań matematycznych w programowaniu można używać również nawiasów. Jeżeli zdecydujemy się nie używać nawiasów, to w wyrażeniu  z użyciem operatorów arytmetycznych istnieje wiązanie lewostronne – działanie po lewej stronie, z tym samym priorytetem arytmetycznym zostanie wykonane jako pierwsze.
 
 *Przykład (2.2) Operacje arytmetyczne wieloargumentowe*
 
@@ -213,7 +213,7 @@ int main() {
 }
 ```
 
-Warto zauważyć, że w przykładzie  (2.4) również występuje konwersja niejawna przy pierwszej operacji przypisania. Jednak tam konwersja dokonuje się na wyniku operacji dzielenia całkowitego, a konwersja jawna pokazana w tym przykładzie zmusza przekonwertowanie zmiennej *a* przed wykonaniem operacji. W tym miejscu kryje się jednak jeszcze jedna konwersja – niejawna konwersja zmiennej *b* na zmienną typu *float .* Dzieje się tak, ponieważ kompilator przed wykonaniem jakiejkolwiek operacji arytmetycznej konwertuje wszystkie zmienne do typu, który przechowuje największą ilość informacji. W tym przypadku *float* niesie za sobą więcej informacji niż *int,* więc zmienna *b* zostaje przekonwertowana niejawnie na zmienną typu *float.* W przypadku w którym konwertujemy typ *float* na *int* to zostanie zapisana tylko część całkowita liczby (tak jak użycie funkcji podłoga).
+Warto zauważyć, że w przykładzie  (2.4) również występuje konwersja niejawna przy pierwszej operacji przypisania. Konwersja tam jednak ze względu na prawostronne wiązanie operatora przypisania wykonuje się dopiero po wykonaniu działania dzielenia całkowitego, a konwersja jawna pokazana w przykładzie (2.5) zmusza przekonwertowanie zmiennej *a* przed wykonaniem operacji. W tym miejscu kryje się jednak jeszcze jedna konwersja – niejawna konwersja zmiennej *b* na zmienną typu *float .* Dzieje się tak, ponieważ kompilator przed wykonaniem jakiejkolwiek operacji arytmetycznej konwertuje wszystkie zmienne do typu, który przechowuje największą ilość informacji. W tym przypadku *float* niesie za sobą więcej informacji niż *int,* więc zmienna *b* zostaje przekonwertowana niejawnie na zmienną typu *float.* W przypadku w którym konwertujemy typ *float* na *int* to zostanie zapisana tylko część całkowita liczby (tak jak użycie funkcji podłoga). Na szczęście nad większością konwersji nie musimy się zastanawiać, kompilator wykona tę pracę za nas. Jednak  w przypadku pojawienia się pewnych błędów można zwrócić uwagę na typy zmiennych używanych w wyrażeniu i dokonać ewentualnej konwersji jawnej jeśli będzie to zasadne (albo nawet czasem dla czytelności kodu).
 
 ## Podsumowanie operatorów arytmetycznych i przypisania.
 
