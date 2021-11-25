@@ -35,7 +35,7 @@ int main() {
 
 ## Operatory arytmetyczne
 
-Operatory arytmetyczne odpowiadają za działania dodawania, odejmowania, mnożenia, dzielenia. Ich użycie jest bardzo intuicyjne więc, najlepiej pokazać je na przykładzie.
+Operatory arytmetyczne odpowiadają za działania dodawania, odejmowania, mnożenia i dzielenia. Ich użycie jest bardzo intuicyjne więc, najlepiej pokazać je na przykładzie.
 
 *Przykład (2.1) Operacje arytmetyczne*
 
