@@ -2,7 +2,7 @@
 
 ## Operator przypisania
 
-Operatory arytmetyczne służą do wykonywania operacji matematycznych na zmiennych. Pierwszym z nich jest użyty już w poprzednim rozdziale operator przypisania. Jego symbolem jest znak ‘=’. Zapisuje on wartość wyrażenia podanego po prawej stronie (P-wyrażenie), do wyrażenia po lewej stronie (L-wyrażenie). L-wyrażenie jest musi spełniać pewne kryteria. My przyjmiemy, że L-wyrażeniem musi być zmienna. P-wyrażeniem jest każde L-wyrażenie oraz inne wyrażenia dające wynik możliwy do zapisu, czyli wszelkiego rodzaju działania matematyczne czy funkcje zwracające wartość (albo kombinacja tych dwóch). W ANSI C istnieje więcej operatorów przypisania, które przypisują od razu wynik działania arytmetycznego wywołanego na przypisywanej zmiennej. Ich opis znajduje się w tabeli w dalszej części tego rozdziału. Operator przypisania posiada wiązanie prawostronne, czyli wyrażenie po prawej stronie zostaje wykonane przed dokonaniem operacji przypisania.
+Operator przypisania `=` zapisuje wartość wyrażenia po prawej stronie do zmiennej po lewej stronie. Po prawej stronie może znaleźć się liczba, inna zmienna, działanie matematyczne lub funkcja zwracająca wartość. Po lewej stronie na tym etapie kursu umieszczamy zmienną, której wartość chcemy zmienić. W dalszej części rozdziału poznamy także operatory, które łączą działanie arytmetyczne z przypisaniem.
 
 *Przykład (2.0)* *Wykonanie przypisania*
 
@@ -121,7 +121,7 @@ int main() {
 
 ## Dzielenie całkowite a dzielenie arytmetyczne
 
-Jedyne, gdzie należałoby się zatrzymać, to przy operacji dzielenia. Częstym „błędem” który spotykamy na początku przygody z programowaniem jest „ucinanie” przez program ciągu występującego po przecinku. „Błąd” ten spowodowany jest użyciem złego typu zmiennej do wykonania operacji i przechowania wyniku. Jeżeli chcemy uzyskać wynik zmiennoprzecinkowy, argumentami operacji i zmienną, do której zapisujemy wynik, muszą być typu zmiennoprzecinkowego (float lub double). Jeżeli użyjemy jednak do tego zmiennych całkowitych (int), wynikiem działania będzie dzielenie całkowite.
+Jedyne, gdzie należałoby się zatrzymać, to przy operacji dzielenia. Częstym „błędem” na początku nauki jest oczekiwanie części ułamkowej po podzieleniu dwóch liczb całkowitych. Aby otrzymać wynik zmiennoprzecinkowy, przynajmniej jeden z argumentów dzielenia musi mieć typ float lub double. Wynik możemy zapisać w zmiennej zmiennoprzecinkowej. Jeżeli oba argumenty są całkowite, dzielenie zostanie wykonane jako całkowite, nawet gdy wynik przypiszemy do zmiennej typu float lub double.
 
 *Przykład (2.3) Różnica dzielenia arytmetycznego i dzielenia całkowitego*
 
@@ -193,7 +193,7 @@ int main() {
 >
 > 0.500000
 
-Oprócz konwersji jawnej, występuje konwersja niejawna. Nie deklaruje w niej bowiem programista typu na jaki ma być przekonwertowana, tylko kompilator dobiera domyślnie typ. 
+Oprócz konwersji jawnej występuje konwersja niejawna. Programista nie zapisuje wtedy rzutowania: typ potrzebny do wykonania działania wynika z typów jego argumentów.
 
 *Przykład (2.5) konwersja niejawna*
 
@@ -202,18 +202,20 @@ Oprócz konwersji jawnej, występuje konwersja niejawna. Nie deklaruje w niej bo
 #include <stdlib.h>
 
 int main() {
-	int a=5;
+	float a=5;
 	int b=10;
 	float c;
-	c=a/b;
-	printf("%f\n",c);
-	c=(float)a/b; /* konwersja jawna int a na typ float */
+	c=a/b; /* b jest niejawnie konwertowane do typu float */
 	printf("%f\n",c);
 	return 0;
 }
 ```
 
-Warto zauważyć, że w przykładzie  (2.4) również występuje konwersja niejawna przy pierwszej operacji przypisania. Konwersja tam jednak ze względu na prawostronne wiązanie operatora przypisania wykonuje się dopiero po wykonaniu działania dzielenia całkowitego, a konwersja jawna pokazana w przykładzie (2.5) zmusza przekonwertowanie zmiennej *a* przed wykonaniem operacji. W tym miejscu kryje się jednak jeszcze jedna konwersja – niejawna konwersja zmiennej *b* na zmienną typu *float .* Dzieje się tak, ponieważ kompilator przed wykonaniem jakiejkolwiek operacji arytmetycznej konwertuje wszystkie zmienne do typu, który przechowuje największą ilość informacji. W tym przypadku *float* niesie za sobą więcej informacji niż *int,* więc zmienna *b* zostaje przekonwertowana niejawnie na zmienną typu *float.* W przypadku w którym konwertujemy typ *float* na *int* to zostanie zapisana tylko część całkowita liczby (tak jak użycie funkcji podłoga). Na szczęście nad większością konwersji nie musimy się zastanawiać, kompilator wykona tę pracę za nas. Jednak  w przypadku pojawienia się pewnych błędów można zwrócić uwagę na typy zmiennych używanych w wyrażeniu i dokonać ewentualnej konwersji jawnej jeśli będzie to zasadne (albo dla czytelności kodu).
+*Wynik działania programu:*
+
+> 0.500000
+
+W przykładzie (2.4) działanie `a/b` jest najpierw dzieleniem całkowitym, a dopiero jego wynik zostaje zapisany jako `float`. Po jawnym rzutowaniu `a` dzielenie daje wynik zmiennoprzecinkowy. W przykładzie (2.5) `a` ma już typ `float`, więc przed dzieleniem wartość `b` jest niejawnie konwertowana do tego typu. Wynik wynosi `0.5`. Przy konwersji wartości zmiennoprzecinkowej na całkowitą część ułamkowa jest odrzucana. Jeśli wynik działania nas zaskakuje, sprawdźmy typy jego argumentów.
 
 ## Podsumowanie operatorów arytmetycznych i przypisania.
 
@@ -308,8 +310,8 @@ int main() {
 #include <stdlib.h>
 
 int main() { 
-   printf("Inches: "); 
    float inches; 
+   printf("Inches: ");
    scanf("%f", &inches); 
 /* wykonanie mnożenia wewnątrz funkcji printf i wyświetlenie z formatowaniem*/
    printf("Centimetres: %.2f", inches*2.54); 
