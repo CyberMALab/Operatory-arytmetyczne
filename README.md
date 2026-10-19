@@ -331,6 +331,8 @@ int main() {
 
 1. Napisz program, który wylicza średnią dla 5 ocen.
 
+1. Wczytaj nieujemną liczbę sekund i wypisz ją jako liczbę pełnych godzin, pozostałych minut i sekund. Przykład: `3661` daje `1 h 1 min 1 s`. Użyj dzielenia całkowitego i operatora `%`.
+
 ***
 [Poprzednia część](https://github.com/CyberMALab/Hello-World-czyli-procerudy-wej-cia-i-wyj-cia-proste-typy-zmiennych.git) | [Spis treści](https://github.com/CyberMALab/Wprowadzenie-do-programowania-w-j-zyku-ANSI-C.git) | [Następna część](https://github.com/CyberMALab/Instrukcja-warunkowa.git)
 ***
